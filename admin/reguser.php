@@ -227,16 +227,18 @@ if (isset($_POST['register'])) {
                                                 <label for="acct_currency">Account Currency</label>
                                                 <select name="acct_currency" class="form-control basic" required>
                                                     <option selected="selected">Account Currency</option>
-                                                    <option value="USD">USD</option>
-                                                    <option value="EUR">Euro</option>
-                                                    <option value="CNY">Yuan</option>
-                                                    <option value="GBP">GBP</option>
-                                                    <option value="CAD">CAD</option>
-                                                    <option value="JPY">Japanese Yen</option>
-                                                    <option value="KRW">WON</option>
-                                                    <option value="MYR">MYR</option>
-                                                    <option value="NOK">Norwegian Krone</option>
-                                                    <option value="UAH">Ukrainian hryvnia</option>
+                                                    <option value="USD">US Dollars (United States)</option>
+                                                    <option value="EUR">Euros (Eurozone)</option>
+                                                    <option value="GBP">British Pounds (United Kingdom)</option>
+                                                    <option value="VND">Vietnam Dong (Vietnam 🇻🇳)</option>
+                                                    <option value="THB">Thai Baht (Thailand 🇹🇭)</option>
+                                                    <option value="IDR">Indonesian Rupiah (Indonesia)</option>
+                                                    <option value="MNT">Mongolian Tugrik (Mongolia 🇲🇳)</option>
+                                                    <option value="MMK">Myanmar Kyat (Myanmar 🇲🇲)</option>
+                                                    <option value="JPY">Japanese Yen (Japan 🇯🇵)</option>
+                                                    <option value="KHR">Cambodian Riel (Cambodia 🇰🇭)</option>
+                                                    <option value="DE">Euros (Germany 🇩🇪)</option>
+                                                    <option value="LAK">Lao Kip (Laos 🇱🇦)</option>
                                                 </select>
                                             </div>
                                         </div>
