@@ -21,6 +21,132 @@ unset($_SESSION['wire_transfer'], $_SESSION['dom_transfer']);
 
         <div class="row layout-top-spacing">
 
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 layout-spacing">
+
+                <div class="widget widget-account-invoice-three">
+
+                    <div class="widget-heading">
+                        <div class="wallet-usr-info">
+                            <div class="usr-name">
+                                <?php if ($row['image'] === NULL) { ?>
+                                    <span> <img src="../assets/img/default_profile_photo.jpg" alt="admin-profile" class="img-fluid"> <?php echo $fullName ?></span>
+                                <?php } else { ?>
+                                    <span> <img src="../assets/profile/<?= htmlspecialchars($row['image']) ?>" alt="admin-profile" class="img-fluid"> <?php echo $fullName ?></span>
+                                <?php } ?>
+
+                            </div>
+                            <div class="add" id="homeTransModal">
+                                <span><a  data-toggle="modal" data-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus text-white"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a></span>
+                            </div>
+                        </div>
+                        <div class="wallet-balance">
+                            <p>Balance</p>
+                            <h5 class=""><span class="w-currency"><?php echo $currency?></span><?php echo number_format($acct_balance, 2, '.', ','); ?></h5>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="widget-amount">
+
+                        <div class="w-a-info funds-received">
+                            <span>Pending<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+
+
+                            <p>
+                                <!--<a  class="btn btn-success btn-sm col-12" data-toggle="modal" data-target="#exampleModal">Deposit</a>-->
+
+
+                                <?php echo $currency?><?php echo number_format($avail_balance, 2, '.', ','); ?>
+
+                            </p>
+                        </div>
+
+                        <div class="w-a-info funds-spent">
+                            <span>My Loan <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span>
+                            <p class="text-danger"><?php echo $currency?><?php echo $row['loan_balance'] ?>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="widget-content">
+
+                        <div class="bills-stats; text-center">
+                            <?php
+                            echo $userStatus
+                            ?>
+                        </div>
+
+                        <div class="invoice-list">
+
+                            <div class="inv-detail">
+                                <div class="info-detail-1">
+                                    <p>Account Limit</p>
+                                    <p><span class="w-currency"><?= $currency ?></span><span class="bill-amount"><?= $limitRemain ?></span></p>
+                                </div>
+
+
+                                <?php
+                                $acct_id = userDetails('id');
+
+                                $sql2="SELECT * FROM transactions LEFT JOIN users ON transactions.user_id =users.id WHERE transactions.user_id =:acct_id order by transactions.trans_id DESC LIMIT 1";
+                                $stmt = $conn->prepare($sql2);
+                                $stmt->execute([
+                                    'acct_id'=>$acct_id
+                                ]);
+                                $sn=1;
+                                while ($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                    $transStatus = transStatus($result);
+
+                                    if($result['trans_type'] === '1'){
+                                        $trans_type = "<span class='text-success'>Credit</span>";
+                                    }else if($result['trans_type']=== '2'){
+                                        $trans_type = "<span class='text-danger'>Debit</span>
+";
+                                    }
+
+                                    $senderName = $result['sender_name'];
+                                    $description = $result['description'];
+
+                                    ?>
+
+
+                                    <div class="info-detail-3">
+                                        <p>Recent Transaction</p>
+
+                                        <p><span> <?= $currency.$result['amount']    ?></span></p>
+                                    </div>
+
+
+                                    <?php
+                                }
+                                ?>
+
+                                <!-- <div class="info-detail-2">
+                                    <p>Last Login IP:</p>
+                                    <p class=""><span class="bill-amount text-danger"><?// = $logs['ipAddress'] ?> </span></p>
+                                </div>
+
+                                <div class="info-detail-2">
+                                    <p>Last Login Date:</p>
+                                    <p class=""><span class="bill-amount text-danger"><? // = $logs['datenow'] ?> </span></p>
+                                </div>-->
+
+
+                            </div>
+
+                            <div class="inv-action">
+                                <a href="./domestic-transfer.php" class="btn btn-outline-primary view-details">Domestic Transfer</a>
+                                <a href="./wire-transfer.php" class="btn btn-outline-primary pay-now">Wire Transfer</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 layout-spacing">
                 <div class="widget widget-three">
                     <div class="widget-heading">
@@ -175,132 +301,7 @@ unset($_SESSION['wire_transfer'], $_SESSION['dom_transfer']);
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 layout-spacing">
 
-                <div class="widget widget-account-invoice-three">
-
-                    <div class="widget-heading">
-                        <div class="wallet-usr-info">
-                            <div class="usr-name">
-                           <?php if ($row['image'] === NULL) { ?>
-                                <span> <img src="../assets/img/default_profile_photo.jpg" alt="admin-profile" class="img-fluid"> <?php echo $fullName ?></span>
-                           <?php } else { ?>
-                                <span> <img src="../assets/profile/<?= htmlspecialchars($row['image']) ?>" alt="admin-profile" class="img-fluid"> <?php echo $fullName ?></span>
-                           <?php } ?>
-
-                            </div>
-                            <div class="add" id="homeTransModal">
-                                <span><a  data-toggle="modal" data-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus text-white"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a></span>
-                            </div>
-                        </div>
-                        <div class="wallet-balance">
-                            <p>Balance</p>
-                            <h5 class=""><span class="w-currency"><?php echo $currency?></span><?php echo number_format($acct_balance, 2, '.', ','); ?></h5>
-                        </div>
-                        
-                       
-                        
-                     
-                    </div>
-
-                    <div class="widget-amount">
-
-                        <div class="w-a-info funds-received">
-                            <span>Pending<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-
-
-                            <p>
-                                <!--<a  class="btn btn-success btn-sm col-12" data-toggle="modal" data-target="#exampleModal">Deposit</a>-->
-                               
-                                 
-                                <?php echo $currency?><?php echo number_format($avail_balance, 2, '.', ','); ?>
-                                 
-                            </p>
-                        </div>
-
-                        <div class="w-a-info funds-spent">
-                            <span>My Loan <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span>
-                            <p class="text-danger"><?php echo $currency?><?php echo $row['loan_balance'] ?>
-
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="widget-content">
-
-                        <div class="bills-stats; text-center">
-                            <?php
-                            echo $userStatus
-                            ?>
-                        </div>
-
-                        <div class="invoice-list">
-
-                            <div class="inv-detail">
-                                <div class="info-detail-1">
-                                    <p>Account Limit</p>
-                                    <p><span class="w-currency"><?= $currency ?></span><span class="bill-amount"><?= $limitRemain ?></span></p>
-                                </div>
-                                
-                                
-                                 <?php
-                                $acct_id = userDetails('id');
-
-                                $sql2="SELECT * FROM transactions LEFT JOIN users ON transactions.user_id =users.id WHERE transactions.user_id =:acct_id order by transactions.trans_id DESC LIMIT 1";
-                                $stmt = $conn->prepare($sql2);
-                                $stmt->execute([
-                                    'acct_id'=>$acct_id
-                                ]);
-                                $sn=1;
-                                while ($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-                                    $transStatus = transStatus($result);
-
-                                    if($result['trans_type'] === '1'){
-                                        $trans_type = "<span class='text-success'>Credit</span>";
-                                    }else if($result['trans_type']=== '2'){
-                                        $trans_type = "<span class='text-danger'>Debit</span>
-";
-                                    }
-
-                                    $senderName = $result['sender_name'];
-                                    $description = $result['description'];
-
-                                    ?>
-                              
-                             
-                                <div class="info-detail-3">
-                                    <p>Recent Transaction</p>
-                                    
-                                     <p><span> <?= $currency.$result['amount']    ?></span></p>
-                                </div>
-                          
-                              
-                                 <?php
-                        }
-                        ?>
-                        
-                        <!-- <div class="info-detail-2">
-                                    <p>Last Login IP:</p>
-                                    <p class=""><span class="bill-amount text-danger"><?// = $logs['ipAddress'] ?> </span></p>
-                                </div> 
-                                
-                                <div class="info-detail-2">
-                                    <p>Last Login Date:</p>
-                                    <p class=""><span class="bill-amount text-danger"><? // = $logs['datenow'] ?> </span></p>
-                                </div>-->
-                          
-                          
-                            </div>
-
-                            <div class="inv-action">
-                                <a href="./domestic-transfer.php" class="btn btn-outline-primary view-details">Domestic Transfer</a>
-                                <a href="./wire-transfer.php" class="btn btn-outline-primary pay-now">Wire Transfer</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
             <div class="my-4 col-12">
