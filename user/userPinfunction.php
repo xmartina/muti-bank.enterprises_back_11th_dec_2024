@@ -358,7 +358,7 @@ if(isset($_POST['domestic-transfer'])){
 }
 
 
-if(isset($_POST['submit_domestic_pin']) && isset($_SESSION['dom-transfer'])) {
+if(isset($_POST['submit_domestic_pin']) ) {
     // Sanitize and validate inputs
     $pin = inputValidation($_POST['pin']);
     $account_id = inputValidation($_POST['account_id']);
