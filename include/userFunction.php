@@ -48,24 +48,65 @@ function userStatus($row){
     }
 }
 
-function toast_alert($type,$msg, $title = false){
+function toast_alert($type, $msg, $title = false){
+    // Set default title if not provided
     if ($title === false){
-        $alert_title = "Ops!!";
-    }else{
+        $alert_title = "Error!";
+    } else {
         $alert_title = $title;
     }
 
+    // Sanitize the inputs to prevent JavaScript injection
+    $type = htmlspecialchars($type, ENT_QUOTES, 'UTF-8');
+    $alert_title = htmlspecialchars($alert_title, ENT_QUOTES, 'UTF-8');
+    $msg = htmlspecialchars($msg, ENT_QUOTES, 'UTF-8');
+
+    // Map PHP alert types to Toastr methods
+    $toastrMethod = 'info'; // Default method
+    switch(strtolower($type)) {
+        case 'success':
+            $toastrMethod = 'success';
+            break;
+        case 'info':
+            $toastrMethod = 'info';
+            break;
+        case 'warning':
+            $toastrMethod = 'warning';
+            break;
+        case 'error':
+            $toastrMethod = 'error';
+            break;
+        default:
+            $toastrMethod = 'info';
+    }
+
+    // Generate the JavaScript for Toastr
     $toast = '<script type="text/javascript">
         $(document).ready(function(){
-        
-          swal({
-            type: "'.$type.'",
-            title: "'.$alert_title.'",
-            text: "'.$msg.'",
-            padding: "2em",
-          });
+            // Toastr options (customize as needed)
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right", // Change position if desired
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000", // Duration the toast is displayed
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            // Display the Toastr notification
+            toastr.'.$toastrMethod.'("'.addslashes($msg).'", "'.addslashes($alert_title).'");
         });
     </script>';
+
     echo $toast;
 }
 
