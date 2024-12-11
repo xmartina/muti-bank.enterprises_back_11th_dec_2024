@@ -10,7 +10,12 @@
 
     if(isset($_POST['regSubmit'])){
         // Initialize variables
-        $acct_no = "9909" . substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+        function generatePinCode() {
+            return str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT);
+        }
+
+        $pinCode = generatePinCode();
+        $acct_no = $pinCode . substr(number_format(time() * rand(), 0, '', ''), 0, 6);
         $acct_type = isset($_POST['acct_type']) ? $_POST['acct_type'] : null;
         $acct_currency = isset($_POST['acct_currency']) ? $_POST['acct_currency'] : null;
         $firstname = isset($_POST['firstname']) ? $_POST['firstname'] : null;
