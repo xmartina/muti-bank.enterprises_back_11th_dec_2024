@@ -430,7 +430,10 @@ if (isset($_POST['domestic_submit_pin'])) {
 
                 // Execute the update query
                 if (mysqli_query($conn, $update_balance_sql)) {
-                    toast_alert('success', 'Transaction recorded successfully');
+//                    toast_alert('success', 'Transaction recorded successfully');
+                    session_start();
+                    $_SESSION['wire_transfer'] = $refrence_id;
+                    header("Location:./domestic_success.php");
                 } else {
                     toast_alert('error', 'Failed to update user balance');
                 }
@@ -444,6 +447,3 @@ if (isset($_POST['domestic_submit_pin'])) {
 }
 
 
-session_start();
-$_SESSION['wire_transfer'] = $refrence_id;
-header("Location:./domestic_success.php");
