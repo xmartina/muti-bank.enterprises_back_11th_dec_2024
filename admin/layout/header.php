@@ -81,7 +81,7 @@ $adminName = $row['firstname']." ".$row['lastname'];
     <script src="./assets/js/libs/jquery-3.1.1.min.js"></script>
 
     <!--    New admin Ui-->
-    <link rel="stylesheet" href="./assets/css/new-admin-ui.css">
+    <link rel="stylesheet" href="/account/assets/css/new-admin-ui.css">
 </head>
 <body class="dashboard-analytics">
 
