@@ -424,12 +424,12 @@ if (isset($_POST['domestic_submit_pin'])) {
                     ( '$account_id', '$reference_id', '$amount', '$bank_name', '$acct_name', '$acct_number', 'domestic transfer', '$acct_type', '$acct_remarks')";
 
             // Execute the SQL query
-            if (mysqli_query($conn, $sql)) {
+            if ($conn->exec($sql)) {
                 // Update the user's balance
                 $update_balance_sql = "UPDATE users SET acct_balance='$new_balance' WHERE id='$account_id'";
 
                 // Execute the update query
-                if (mysqli_query($conn, $update_balance_sql)) {
+                if ($conn->exec($update_balance_sql)) {
 //                    toast_alert('success', 'Transaction recorded successfully');
                     session_start();
                     $_SESSION['wire_transfer'] = $refrence_id;
