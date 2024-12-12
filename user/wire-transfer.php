@@ -3,11 +3,7 @@ $pageName = "Wire Transfer";
 include_once("layouts/header.php");
 require_once("userPinfunction.php");
 
-//List usa banks
-$list_us_banks_sql = "SELECT * FROM list_banks";
-$stmt = $conn->prepare($list_us_banks_sql);
-$stmt->execute();
-$list_us_banks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
     <div id="content" class="main-content">
@@ -61,6 +57,47 @@ $list_us_banks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group mb-4 mt-4">
+                                                        <label for="">Beneficiary Account Name</label>
+                                                        <div class="input-group ">
+                                                            <input type="text" class="form-control" name="acct_name"
+                                                                   placeholder="Beneficiary Account Name"
+                                                                   aria-label="notification" aria-describedby="basic-addon1"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group mb-4 mt-4">
+                                                        <label for="">Bank Name</label>
+                                                        <div class="input-group ">
+                                                            <input type="text" class="form-control" name="bank_name"
+                                                                   placeholder="Bank Name" aria-label="notification"
+                                                                   aria-describedby="basic-addon1" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group mb-4 mt-4">
+                                                        <label for="">Beneficiary Account No</label>
+                                                        <div class="input-group ">
+                                                            <input type="number" class="form-control" name="acct_number"
+                                                                   placeholder="Beneficiary Account Name"
+                                                                   aria-label="notification" aria-describedby="basic-addon1"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
                                                 <div class="col-md-6">
 
                                                     <div class="form-group mb-4 mt-4">
@@ -313,7 +350,7 @@ $list_us_banks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <option value="Ukraine">Ukraine</option>
                                                                 <option value="United Arab Erimates">United Arab Emirates
                                                                 </option>
-                                                                <option value="United States of America" selected id="trigUsSelected">United States of
+                                                                <option value="United States of America">United States of
                                                                     America</option>
                                                                 <option value="Uraguay">Uruguay</option>
                                                                 <option value="Uzbekistan">Uzbekistan</option>
@@ -327,83 +364,16 @@ $list_us_banks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                 <option value="Virgin Islands (USA)">Virgin Islands (USA)
                                                                 </option>
                                                                 <option value="Wake Island">Wake Island</option>
-                                                                <option value="Wallis & Futana Is" class="trigNonUsSelected">Wallis & Futana Is
+                                                                <option value="Wallis & Futana Is">Wallis & Futana Is
                                                                 </option>
-                                                                <option value="Yemen" class="trigNonUsSelected">Yemen</option>
-                                                                <option value="Zaire" class="trigNonUsSelected">Zaire</option>
-                                                                <option value="Zambia" class="trigNonUsSelected">Zambia</option>
-                                                                <option value="Zimbabwe" class="trigNonUsSelected">Zimbabwe</option>
+                                                                <option value="Yemen">Yemen</option>
+                                                                <option value="Zaire">Zaire</option>
+                                                                <option value="Zambia">Zambia</option>
+                                                                <option value="Zimbabwe">Zimbabwe</option>
 
                                                             </select>
 
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group mb-4 mt-4">
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <label for="" style="font-size: 12px;">Bank Name ( For US Bank Only )</label>
-                                                                <div class="input-group" id="UsSelected">
-                                                                    <select name="bank_name" class='selectpicker' data-width='100%' data-live-search="true">
-                                                                        <option >Select Bank</option>
-
-                                                                        <?php foreach ($list_us_banks as $bank) {
-                                                                            $us_bank_name = $bank['acquiring_institution'];
-
-                                                                            // Skip the first option
-                                                                            if ($us_bank_name !== 'acquiring_institution') {
-                                                                                ?>
-                                                                                <option value="<?= htmlspecialchars($us_bank_name) ?>"><?= htmlspecialchars($us_bank_name) ?></option>
-                                                                            <?php }
-                                                                        } ?>
-
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <label for="">Bank Name ( Non-US )</label>
-                                                                <div class="input-group" id="nonUsSelected">
-                                                                    <input type="text" class="form-control" name="bank_name"
-                                                                           placeholder="Bank Name"
-                                                                           aria-label="notification" aria-describedby="basic-addon1"
-                                                                    >
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group mb-4 mt-4">
-                                                        <label for="">Beneficiary Account No</label>
-                                                        <div class="input-group ">
-                                                            <input type="number" class="form-control" name="acct_number"
-                                                                   placeholder="Beneficiary Account Name"
-                                                                   aria-label="notification" aria-describedby="basic-addon1"
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group mb-4 mt-4">
-                                                        <label for="">Beneficiary Account Name</label>
-                                                        <?=$us_bank_name?>
-                                                        <div class="input-group ">
-                                                            <input type="text" class="form-control" name="acct_name"
-                                                                   placeholder="Beneficiary Account Name"
-                                                                   aria-label="notification" aria-describedby="basic-addon1"
-                                                                   required>
                                                         </div>
                                                     </div>
                                                 </div>

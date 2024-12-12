@@ -277,40 +277,28 @@ if(isset($_POST['submit-pin'])){
 
 if(isset($_POST['domestic-transfer'])){
 
-    $amount = inputValidation($_POST['amount']);
-    $acct_name = inputValidation($_POST['acct_name']);
-    $bank_name = inputValidation($_POST['bank_name']);
-    $acct_number = inputValidation($_POST['acct_number']);
-    $acct_type = inputValidation($_POST['acct_type']);
-    $acct_remarks = inputValidation($_POST['acct_remarks']);
+    $amount = $_POST['amount'];
+    $acct_name = $_POST['acct_name'];
+    $bank_name = $_POST['bank_name'];
+    $acct_number = $_POST['acct_number'];
+    $acct_type = $_POST['acct_type'];
+    $acct_remarks = $_POST['acct_remarks'];
 
     $acct_amount = $row['acct_balance'];
-    $account_id = $row['id'];
-    $acct_stat = $row['acct_status']; // Assuming 'acct_status' holds account status
+    $account_id =$row['id'];
+
+
+
 
     if($acct_stat === 'hold' ){
         toast_alert("error","Account on Hold Contact Support");
-    }
-    elseif($amount > $acct_amount){
+    }elseif($amount > $acct_amount){
         toast_alert("error","Insufficient Balance!");
-    }
-    else {
-
-        // Fetch the current OTP
-        $getAcct_otp = "SELECT acct_otp FROM users WHERE id=:id";
-        $stmt = $conn->prepare($getAcct_otp);
-        $stmt->execute(['id' => $account_id]);
-        $acct_otp_ResultCode = $stmt->fetch(PDO::FETCH_ASSOC);
-        $acct_otp = $acct_otp_ResultCode['acct_otp'];
-
-        // Generate unique transfer ID and use existing OTP
+    }else {
         $trans_id = uniqid();
-        $trans_opt = $acct_otp; // Using existing OTP
+        $trans_opt = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
         $trans_type = "domestic transfer";
-
-        // Insert into temp_trans
-        $sql = "INSERT INTO temp_trans (amount, trans_id, acct_id, bank_name, acct_name_id, acct_number, acct_type, acct_remarks, trans_otp, trans_type) 
-                VALUES (:amount, :trans_id, :acct_id, :bank_name, :acct_name, :acct_number, :acct_type, :acct_remarks, :trans_otp, :trans_type)";
+        $sql = "INSERT INTO temp_trans (amount,trans_id,acct_id,bank_name,acct_name_id,acct_number,acct_type,acct_remarks,trans_otp,trans_type) VALUES(:amount,:trans_id,:acct_id,:bank_name,:acct_name,:acct_number,:acct_type,:acct_remarks,:trans_otp,:trans_type )";
         $tranfered = $conn->prepare($sql);
         $tranfered->execute([
             'amount' => $amount,
@@ -322,144 +310,83 @@ if(isset($_POST['domestic-transfer'])){
             'acct_type' => $acct_type,
             'acct_remarks' => $acct_remarks,
             'trans_otp' => $trans_opt,
-            'trans_type' => $trans_type
+            'trans_type' =>$trans_type
         ]);
 
-        // Update the user's OTP (if needed)
-        // In your case, you are reusing the existing OTP
+        if (true) {
+//            $TRANS = uniqid('w', true);
+            $trans_id = mt_rand(100000, 999999);
+            $trans_opt = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
 
-        // Send OTP to the user
-        $sql = "SELECT acct_phone, firstname, acct_otp FROM users WHERE id=:id";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(['id' => $account_id]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $code = $result['acct_otp'];
-        $number = $result['acct_phone'];
-        $message = "Dear " . $result['firstname'] . ", your verify code is " . $code;
-
-        if($page['twillio_status'] == '1'){
-            $data = twilioController::sendSmsCode($number, $message);
-        }
-
-        $APP_NAME = $pageTitle;
-        $emailMessage = $sendMail->pinRequest($currency, $amount, $fullName, $code, $APP_NAME);
-        $subject = "[OTP CODE] - $APP_NAME";
-        $email_message->send_mail($email, $emailMessage, $subject);
-
-        // Set session variables
-        $_SESSION['dom-transfer'] = $code;
-        $_SESSION['transfer_id'] = $trans_id;
-
-        // Redirect to PIN verification page
-        header("Location: ./domestic_pin.php");
-        exit();
-    }
-}
-
-
-if(isset($_POST['submit_domestic_pin']) ) {
-    // Sanitize and validate inputs
-    $pin = inputValidation($_POST['pin']);
-    $account_id = inputValidation($_POST['account_id']);
-    $amount = inputValidation($_POST['amount']);
-    $bank_name = inputValidation($_POST['bank_name']);
-    $acct_name = inputValidation($_POST['acct_name']);
-    $acct_number = inputValidation($_POST['acct_number']);
-    $acct_type = inputValidation($_POST['acct_type']);
-    $acct_country = inputValidation($_POST['acct_country']);
-    $acct_swift = inputValidation($_POST['acct_swift']);
-    $acct_routing = inputValidation($_POST['acct_routing']);
-    $acct_remarks = inputValidation($_POST['acct_remarks']);
-
-    // Fetch user details
-    $sql = "SELECT * FROM users WHERE id = :id";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute(['id' => $account_id]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if(!$user){
-        toast_alert('error', 'User not found.');
-        exit();
-    }
-
-    $oldPin = $user['acct_otp'];
-    $acct_amount = $user['acct_balance'];
-    $acct_stat = $user['acct_status']; // Assuming 'acct_status' holds account status
-
-    $limit_balance = $user['acct_limit'];
-    $transferLimit = $user['limit_remain'];
-
-    // Verify OTP
-    if($pin !== $oldPin){
-        toast_alert('error','Incorrect OTP CODE');
-    }
-    // Check for account status
-    elseif($acct_stat === 'hold'){
-        toast_alert('error','Account on Hold. Contact Support.');
-    }
-    // Check for sufficient balance
-    elseif($amount > $acct_amount){
-        toast_alert("error","Insufficient Balance!");
-    }
-    else {
-        // Calculate new balances
-        $tBalance = ($transferLimit - $amount);
-        $aBalance = ($acct_amount - $amount);
-
-        try {
-            // Begin Transaction
-            $conn->beginTransaction();
-
-            // Update user's balance and remaining limit
-            $update_sql = "UPDATE users SET limit_remain = :limit_remain, acct_balance = :acct_balance, acct_otp = NULL WHERE id = :id";
-            $update_stmt = $conn->prepare($update_sql);
-            $update_stmt->execute([
-                'limit_remain' => $tBalance,
-                'acct_balance' => $aBalance,
+            $sql = "UPDATE users SET acct_otp=:acct_otp WHERE id=:id";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                'acct_otp' => $trans_opt,
                 'id' => $account_id
             ]);
 
-            // Insert into domestic_transfer table
-            $refrence_id = uniqid('dom_', true); // Ensure unique reference ID
-            $trans_type = "domestic transfer";
-            $dom_status = 0; // Assuming 0 means pending or initiated
+            if (true) {
+                $sql = "SELECT * FROM users WHERE id=:id";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute([
+                    'id' => $account_id
+                ]);
 
-            $insert_sql = "INSERT INTO domestic_transfer (acct_id, refrence_id, amount, bank_name, acct_name, acct_number, trans_type, acct_type, acct_remarks, dom_status) 
-                           VALUES (:acct_id, :refrence_id, :amount, :bank_name, :acct_name, :acct_number, :trans_type, :acct_type, :acct_remarks, :dom_status)";
-            $insert_stmt = $conn->prepare($insert_sql);
-            $insert_stmt->execute([
-                'acct_id' => $account_id,
-                'refrence_id' => $refrence_id,
-                'amount' => $amount,
-                'bank_name' => $bank_name,
-                'acct_name' => $acct_name,
-                'acct_number' => $acct_number,
-                'trans_type' => $trans_type,
-                'acct_type' => $acct_type,
-                'acct_remarks' => $acct_remarks,
-                'dom_status' => $dom_status
-            ]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Commit Transaction
-            $conn->commit();
+                $code = $result['acct_otp'];
 
-            // Optionally, send notifications (SMS, Email)
+                $number = $result['acct_phone'];
+                $message = "Dear ".$result['firstname']. "Your verify code is ". $code;
 
-            // Unset session variables related to domestic transfer
-            unset($_SESSION['dom-transfer']);
-            unset($_SESSION['transfer_id']); // If you have stored transfer_id in session
+                if($page['twillio_status'] == '1'){
+                    $data = twilioController::sendSmsCode($number,$message);
+                }
 
-            // Redirect to success page
-            header("Location: ./domestic_success.php");
-            exit();
+                $APP_NAME = $pageTitle;
+                $message = $sendMail->pinRequest($currency, $amount, $fullName, $code, $APP_NAME);
+                $subject = "[OTP CODE] - $APP_NAME";
+                $email_message->send_mail($email, $message, $subject);
 
-        } catch (Exception $e) {
-            // Rollback Transaction in case of error
-            $conn->rollBack();
-            toast_alert("error", "Sorry, an error occurred. Please try again or contact support.");
-            // Log the error message for debugging (do not show to users)
-            error_log($e->getMessage());
+            }
+
+            if (true) {
+                session_start();
+                $_SESSION['dom-transfer'] = $code;
+                header("Location:./pin.php");
+            }
+
+
+            //  if (true) {
+            //         if($row['billing_code']==='0') {
+
+            //             $sql = "SELECT * FROM users WHERE id=:id";
+            //             $stmt = $conn->prepare($sql);
+            //             $stmt->execute([
+            //                 'id' => $account_id
+            //             ]);
+            //             $resultCode = $stmt->fetch(PDO::FETCH_ASSOC);
+            //             $code = $resultCode['acct_otp'];
+
+            //             $APP_NAME = $pageTitle;
+            //             $message = $sendMail->pinRequest($currency, $amount, $fullName, $code, $APP_NAME);
+            //             $subject = "[OTP CODE] - $APP_NAME";
+            //             $email_message->send_mail($email, $message, $subject);
+
+            //             if(true){
+            //                 session_start();
+            //                 $_SESSION['dom-transfer'] = $code;
+            //                     header("Location:./pin.php");
+            //             }
+            //         }else{
+            //             session_start();
+            //             $_SESSION['dom-transfer']=$user_id;
+            //             header("Location:./cot.php");
+            //         }
+            //     }
+
+
+
         }
     }
 }
