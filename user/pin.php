@@ -20,7 +20,8 @@ include("./userPinfunction.php");
 
                             </div>
                         </div>
-                        <form action="" method="post" id="transfer_form">
+<!--                        <form action="" method="post" id="transfer_form">-->
+                        <form action="" method="post" >
                             <div class="row">
                                 <div class="col-md-12">
                                     <p class="text-center text-info">HELLO, <?= ucwords($fullName)?> KINDLY VALIDATE THE 6 DIGIT OTP SENT TO YOUR <?= $row['acct_phone']?> OR <?= $row['acct_email']?>
@@ -75,7 +76,8 @@ include("./userPinfunction.php");
 
                             </div>
                         </div>
-                        <form action="" method="post" id="transfer_form">
+<!--                        <form action="" method="post" id="transfer_form">-->
+                        <form action="" method="post">
                             <div class="row">
                                 <div class="col-md-12">
                                     <p class="text-center text-info">HELLO, <?= ucwords($fullName)?> KINDLY VALIDATE THE 6 DIGIT OTP SENT TO YOUR <?= $row['acct_phone']?> OR <?= $row['acct_email']?>
