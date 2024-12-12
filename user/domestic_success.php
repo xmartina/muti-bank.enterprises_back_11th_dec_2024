@@ -31,8 +31,7 @@ $status = wireStatus($wire_trans);
                         <div class="user-profile">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <?php
-                                    if($_SESSION['dom_transfer']){
+                                    <?php if($_SESSION['dom_transfer']){
                                     //DOMESTIC TRANSACTION FETCH
                                     $sql = "SELECT * FROM domestic_transfer WHERE acct_id =:acct_id ORDER BY dom_id DESC LIMIT 1";
                                     $stmt = $conn->prepare($sql);
@@ -64,7 +63,7 @@ $status = wireStatus($wire_trans);
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-center text-info text-uppercase">DEAR, <?= ucwords($fullName)?> YOUR TRANSFER TO  <span class="text-uppercase"><?=$dom_transfer['acct_name'] ?></span> IS BEEN PROCESSED. IN 48 TO 72 HOURS IT WILL BE COMPLETED.
+                                    <p class="text-center text-info text-uppercase">DEAR, <?= ucwords($fullName)?> YOUR TRANSFER TO  <span class="text-uppercase"><?=$dom_transfer['acct_name'] ?></span> IS BEEN PROCESSED
                                     </p>
                                     <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                                         100%
@@ -120,7 +119,7 @@ $status = wireStatus($wire_trans);
 
                                             <a href="javascript:window.print()"
                                                class="btn btn-success waves-effect waves-light me-1"><i
-                                                    class="fa fa-print"></i> Print Statement</a>
+                                                        class="fa fa-print"></i> Print Statement</a>
                                         </div>
                                     </div>
 
@@ -132,6 +131,6 @@ $status = wireStatus($wire_trans);
                 </div>
             </div>
 
-            <?php
-            include_once("layouts/footer.php");
-            ?>
+<?php
+include_once("layouts/footer.php");
+?>

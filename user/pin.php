@@ -123,8 +123,6 @@ include("./userPinfunction.php");
                             </div>
                         </form>
                     </div>
-
-
                     <?php
                 }
                 ?>
