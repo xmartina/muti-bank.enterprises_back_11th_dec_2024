@@ -213,7 +213,7 @@ function loanStatus($result){
 
 function domestic($result){
     if ($result['dom_status'] === '0') {
-        return '<span class="badge outline-badge-secondary shadow-none col-12">In Progress</span>';
+        echo '<span class="badge outline-badge-secondary shadow-none col-12">In Progress</span>';
     }
     if($result['dom_status'] === '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-12">Hold</span>';
