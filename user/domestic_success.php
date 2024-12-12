@@ -4,7 +4,7 @@ include_once("layouts/header.php");
 include("./userPinfunction.php");
 
 //TEMP TRANSACTION FETCH
-$sql = "SELECT * FROM wire_transfer WHERE acct_id =:acct_id ORDER BY wire_id DESC LIMIT 1";
+$sql = "SELECT * FROM domestic_transfer WHERE acct_id =:acct_id ORDER BY wire_id DESC LIMIT 1";
 $stmt = $conn->prepare($sql);
 $stmt->execute([
     'acct_id'=>$user_id
@@ -31,7 +31,7 @@ $status = wireStatus($wire_trans);
                         <div class="user-profile">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <?php if($_SESSION['dom_transfer']){
+                                    <?php if(strpos($_SERVER['REQUEST_URI'],'success')){
                                     //DOMESTIC TRANSACTION FETCH
                                     $sql = "SELECT * FROM domestic_transfer WHERE acct_id =:acct_id ORDER BY dom_id DESC LIMIT 1";
                                     $stmt = $conn->prepare($sql);
