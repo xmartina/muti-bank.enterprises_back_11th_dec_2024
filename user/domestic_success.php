@@ -78,10 +78,10 @@ include("./userPinfunction.php");
                                             <td>ACCOUNT NO</td>
                                             <td><?= $dom_transfer['acct_number'] ?></td>
                                         </tr>
-                                        <tr>
-                                            <td>STATUS</td>
-                                            <td><?=$status ?></td>
-                                        </tr>
+<!--                                        <tr>-->
+<!--                                            <td>STATUS</td>-->
+<!--                                            <td>--><?php //=$status ?><!--</td>-->
+<!--                                        </tr>-->
 
                                         </tbody>
                                     </table>
