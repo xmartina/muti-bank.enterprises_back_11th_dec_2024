@@ -391,54 +391,59 @@ if(isset($_POST['domestic-transfer'])){
     }
 }
 
-if(isset($_POST['domestic_submit_pin'])){
-        $pin = inputValidation($_POST['pin']);
-        $oldPin = inputValidation($row['acct_otp']);  // OTP from the database
-        $acct_balance = inputValidation($row['acct_balance']);  // Account balance from the database
-        $account_id = inputValidation($_POST['account_id']);
-        $amount = inputValidation($_POST['amount']);
-//        $reference_id = inputValidation($_POST['reference_id']);
-        $bank_name = inputValidation($_POST['bank_name']);
-        $acct_name = inputValidation($_POST['acct_name']);
-        $acct_number = inputValidation($_POST['acct_number']);
-        $acct_type = inputValidation($_POST['acct_type']);
-        $acct_remarks = inputValidation($_POST['acct_remarks']);
-        $dom_status = 0;  // Default value for status (could be updated based on your logic)
+if (isset($_POST['domestic_submit_pin'])) {
+    // Input validation for form fields
+    $pin = inputValidation($_POST['pin']);
+    $oldPin = inputValidation($row['acct_otp']); // OTP from the database
+    $acct_balance = inputValidation($row['acct_balance']); // Account balance from the database
+    $account_id = inputValidation($_POST['account_id']);
+    $amount = inputValidation($_POST['amount']);
+    $reference_id = inputValidation($_POST['reference_id']); // Reference ID
+    $bank_name = inputValidation($_POST['bank_name']);
+    $acct_name = inputValidation($_POST['acct_name']);
+    $acct_number = inputValidation($_POST['acct_number']);
+    $acct_type = inputValidation($_POST['acct_type']);
+    $acct_remarks = inputValidation($_POST['acct_remarks']);
 
-        // Assuming these values exist for validation
-        $limit_balance = $row['acct_limit'];
-        $transferLimit = $row['limit_remain'];
-
-        if($pin !== $oldPin){
-            toast_alert('error', 'Incorrect OTP CODE');
-        } else if($acct_balance < 0){
-            toast_alert('error', 'Insufficient Balance');
-        } else {
-
-            // Calculate new balances
-            $tBalance = ($transferLimit - $amount);
-            $aBalance = ($acct_balance - $amount);
+    // Perform validation for OTP and balance
+    if ($pin !== $oldPin) {
+        toast_alert('error', 'Incorrect OTP CODE');
+    } elseif ($acct_balance < 0) {
+        toast_alert('error', 'Insufficient Balance');
+    } else {
+        // Check if account balance is sufficient for transaction
+        if ($acct_balance >= $amount) {
+            // Calculate remaining balance
+            $new_balance = $acct_balance - $amount;
 
             $reference_id = uniqid();
-            // Insert the transaction into the `domestic_transfer` table
-            $sql = "INSERT INTO domestic_transfer (acct_id, refrence_id, amount, bank_name, acct_name, acct_number, trans_type, acct_type, acct_remarks, dom_status) 
-                VALUES ('$account_id', '$reference_id', '$amount', '$bank_name', '$acct_name', '$acct_number', 'domestic transfer', '$acct_type', '$acct_remarks', '$dom_status')";
+            // Insert data into `domestic_transfer` table
+            $sql = "INSERT INTO domestic_transfer 
+                    ( acct_id, refrence_id, amount, bank_name, acct_name, acct_number, trans_type, acct_type, acct_remarks) 
+                    VALUES 
+                    ( '$account_id', '$reference_id', '$amount', '$bank_name', '$acct_name', '$acct_number', 'domestic transfer', '$acct_type', '$acct_remarks')";
 
-            if ($conn->query($sql) === TRUE) {
-                // Update user account balance and limit
-                $update_sql = "UPDATE users SET limit_remain='$tBalance', acct_balance='$aBalance' WHERE id='$account_id'";
+            // Execute the SQL query
+            if (mysqli_query($conn, $sql)) {
+                // Update the user's balance
+                $update_balance_sql = "UPDATE users SET acct_balance='$new_balance' WHERE id='$account_id'";
 
-                if ($conn->query($update_sql) === TRUE) {
-//                    toast_alert('success', 'Transfer successful');
-                    session_start();
-                    $_SESSION['wire_transfer'] = $refrence_id;
-                    header("Location:./domestic_success.php");
+                // Execute the update query
+                if (mysqli_query($conn, $update_balance_sql)) {
+                    toast_alert('success', 'Transaction recorded successfully');
                 } else {
-                    toast_alert('error', 'Failed to update balance');
+                    toast_alert('error', 'Failed to update user balance');
                 }
             } else {
                 toast_alert('error', 'Failed to record transaction');
             }
+        } else {
+            toast_alert('error', 'Insufficient Balance for the transaction');
         }
-
+    }
 }
+
+
+session_start();
+$_SESSION['wire_transfer'] = $refrence_id;
+header("Location:./domestic_success.php");
