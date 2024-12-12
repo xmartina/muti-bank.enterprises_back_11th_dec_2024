@@ -91,7 +91,7 @@ include("./userPinfunction.php");
                                 <div class="col-md-6 ">
                                     <div class="form-group">
                                         <div class="input-group ">
-                                            <input type="text" name="type" value="dom_tranfer" hidden>
+                                            <input type="text" name="type" value="dom-transfer" hidden>
 
                                             <input type="number" class="form-control" name="pin" placeholder="pin" aria-label="notification" aria-describedby="basic-addon1" required>
                                         </div>
