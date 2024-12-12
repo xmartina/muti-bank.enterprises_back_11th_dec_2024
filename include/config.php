@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 define("WEB_TITLE","Multi Bank"); // Change Bank Name
 define("WEB_URL","https://finance.muti-bank.enterprises/account"); // Change No "/" Ending splash
 define("WEB_EMAIL","support@finance.muti-bank.enterprises"); // Change Your Website Email
