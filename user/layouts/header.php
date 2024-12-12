@@ -154,7 +154,7 @@ if ($row['acct_currency'] === 'USD') {
     <meta http-equiv="Content-Type; encoding" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title><?=$pageName?> - <?=$pageTitle ?> </title>
-    <link rel="icon" type="image/x-icon" href="/assets/images/logo/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/account/assets/images/logo/favicon.png" />
     <link href="/assets/css/loader.css" rel="stylesheet" type="text/css" />
     <?php
     $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
