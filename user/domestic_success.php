@@ -3,23 +3,6 @@ $pageName = "Success";
 include_once("layouts/header.php");
 include("./userPinfunction.php");
 
-//TEMP TRANSACTION FETCH
-$sql = "SELECT * FROM domestic_transfer WHERE acct_id =:acct_id ORDER BY wire_id DESC LIMIT 1";
-$stmt = $conn->prepare($sql);
-$stmt->execute([
-    'acct_id'=>$user_id
-]);
-$wire_trans = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
-
-$status = wireStatus($wire_trans);
-
-
-
-
-
 ?>
 
 <div id="content" class="main-content">
