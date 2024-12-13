@@ -164,7 +164,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $full_name Your Withdrawal of $currency number_format($amount, 2, '.', ',') in your account in been processed.</p>
+                            <p style='margin: 0;'>Dear $full_name Your Withdrawal of $currency  " . number_format($amount, 2, '.', ',')  . " in your account in been processed.</p>
                         </td>
                     </tr>
                     <tr>
@@ -172,7 +172,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency  " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Bank Name</td>
@@ -773,7 +773,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $full_name Your Withdrawal of $currency number_format($amount, 2, '.', ',') in your account in been processed. </p>
+                            <p style='margin: 0;'>Dear $full_name Your Withdrawal of $currency  " . number_format($amount, 2, '.', ',')  . " in your account in been processed. </p>
                         </td>
                     </tr>
                     <tr>
@@ -781,7 +781,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency  " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Transaction ID</td>
@@ -976,7 +976,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency number_format($amount, 2, '.', ',') in Your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -1352,7 +1352,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Transaction of $currency number_format($amount, 2, '.', ',') from your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Transaction of $currency  " . number_format($amount, 2, '.', ',')  . " from your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -1949,7 +1949,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency number_format($amount, 2, '.', ',') in Your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -1957,7 +1957,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency  number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency   " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Payment Method</td>
@@ -2138,7 +2138,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Domestic transfer of $currency number_format($amount, 2, '.', ',') in Your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Domestic transfer of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -2146,7 +2146,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency  number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency   " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Bank Name</td>
@@ -2339,7 +2339,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Wire transfer of $currency number_format($amount, 2, '.', ',') in Your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Wire transfer of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -2347,7 +2347,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency  number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency   " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Bank Name</td>
@@ -2553,7 +2553,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency number_format($amount, 2, '.', ',') in Your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -2561,7 +2561,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency  number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency   " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Payment Method</td>
@@ -2741,7 +2741,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency number_format($amount, 2, '.', ',') in Your Account </p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Deposit of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account </p>
                         </td>
                     </tr>
                     <tr>
@@ -2749,7 +2749,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' >$currency  number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >$currency   " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Payment Method</td>
@@ -2929,7 +2929,7 @@ class emailMessage{
                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                     <tr>
                         <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-                            <p style='margin: 0;'>Dear $fullName You just made a Transaction of $currency number_format($amount, 2, '.', ',') in Your Account  Kindly make use of this CODE to complete your Transaction Thanks</p>
+                            <p style='margin: 0;'>Dear $fullName You just made a Transaction of $currency  " . number_format($amount, 2, '.', ',')  . " in Your Account  Kindly make use of this CODE to complete your Transaction Thanks</p>
                         </td>
                     </tr>
                     <tr>
@@ -3696,7 +3696,7 @@ class emailMessage{
                             <table width='100%' border='2' cellspacing='5' cellpadding='5' >
                                 <tr>
                                     <td bgcolor='#ffffff' align='' >Amount</td>
-                                    <td bgcolor='#ffffff' align='' > number_format($amount, 2, '.', ',')</td>
+                                    <td bgcolor='#ffffff' align='' >  " . number_format($amount, 2, '.', ',')  . "</td>
                                 </tr>
                                 <tr>
                                 <p style='margin: 0;'>$loan_remarks</p>
