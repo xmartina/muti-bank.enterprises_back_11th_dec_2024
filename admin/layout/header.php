@@ -86,11 +86,7 @@ $adminName = $row['firstname']." ".$row['lastname'];
 .sidebar-theme #compactSidebar {
     background: #009921;
 }
-.sidebar-wrapper #compact_submenuSidebar {
-   
-    background: rgb(0, 153, 33);
-    border-right: 1px solid #e0ede4;
-}
+
 </style>
 </head>
 <body class="dashboard-analytics">
