@@ -60,7 +60,7 @@ include("./userPinfunction.php");
                                         <tbody>
                                         <tr>
                                             <td>AMOUNT</td>
-                                            <td><?=$currency. $dom_transfer['amount'] ?></td>
+                                            <td><?=$currency. number_format($dom_transfer['amount'], 2, '.', ',')?></td>
                                         </tr>
                                         <tr>
                                             <td>REFERENCE ID</td>
