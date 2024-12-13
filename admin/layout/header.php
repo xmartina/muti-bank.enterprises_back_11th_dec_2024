@@ -82,6 +82,16 @@ $adminName = $row['firstname']." ".$row['lastname'];
 
     <!--    New admin Ui-->
     <link rel="stylesheet" href="/account/assets/css/new-admin-ui.css">
+<style>
+.sidebar-theme #compactSidebar {
+    background: #009921;
+}
+.sidebar-wrapper #compact_submenuSidebar {
+   
+    background: rgb(0, 153, 33);
+    border-right: 1px solid #e0ede4;
+}
+</style>
 </head>
 <body class="dashboard-analytics">
 
