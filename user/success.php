@@ -60,7 +60,10 @@ $status = wireStatus($wire_trans);
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="text-center text-info text-uppercase">DEAR, <?= ucwords($fullName)?> YOUR TRANSFER TO  <span class="text-uppercase"><?= $wire_trans['acct_name']?></span> IS BEEN PROCESSED
+                            <p class="text-center text-info text-uppercase">
+                                DEAR, <?= ucwords($fullName) ?> YOUR TRANSFER TO <span class="text-uppercase"><?= $dom_transfer['acct_name'] ?></span> IS BEING PROCESSED. 
+                                <br> Please note that the transaction will take up to 24 hours to complete.
+                            </p>
 
                             <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                                 100%

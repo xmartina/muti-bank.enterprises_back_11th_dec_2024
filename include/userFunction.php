@@ -111,13 +111,13 @@ function toast_alert($type, $msg, $title = false){
 }
 
 function notify_alert($msg,$colorType,$duration,$action = false){
-    if($colorType === 'success'){
+    if($colorType == 'success'){
         $color = "#1abc9c";
-    }elseif ($colorType  === 'danger'){
+    }elseif ($colorType  == 'danger'){
         $color = "#e7515a";
-    }elseif ($colorType === 'warning'){
+    }elseif ($colorType == 'warning'){
         $color = "#e2a03f";
-    }elseif ($colorType === 'info'){
+    }elseif ($colorType == 'info'){
         $color = "#2196f3";
     }else{
         $color = "#4361ee";
@@ -151,18 +151,18 @@ function notify_alert($msg,$colorType,$duration,$action = false){
 
 //DEPOSIT TRANSACTION STATUS
 function depositStatus($result){
-    if ($result['crypto_status'] === '0') {
+    if ($result['crypto_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-12">In Progress</span>';
     }
-    if($result['crypto_status'] === '2'){
+    if($result['crypto_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-12">Hold</span>';
     }
 
-    if($result['crypto_status'] === '3') {
+    if($result['crypto_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-12">Cancelled</span>';
     }
 
-    if($result['crypto_status'] === '1') {
+    if($result['crypto_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-12">Completed</span>';
     }
 }
@@ -170,18 +170,18 @@ function depositStatus($result){
 
 //LOAN MODAL TRANSACTION STATUS
 function loanModalStatus($result){
-    if ($result['loan_status'] === '0') {
+    if ($result['loan_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-12">In Progress</span>';
     }
-    if($result['loan_status'] === '2'){
+    if($result['loan_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-12">Hold</span>';
     }
 
-    if($result['loan_status'] === '3') {
+    if($result['loan_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-12">Cancelled</span>';
     }
 
-    if($result['loan_status'] === '1') {
+    if($result['loan_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-12">Completed</span>';
     }
 }
@@ -192,18 +192,18 @@ function loanModalStatus($result){
 //LOAN TRANSACTION
 
 function loanStatus($result){
-    if ($result['loan_status'] === '0') {
+    if ($result['loan_status'] == '0') {
         return '<span class="text-primary">LOAN In Progress!</span>';
     }
-    if($result['loan_status'] === '2'){
+    if($result['loan_status'] == '2'){
         return  '<span class="text-danger">LOAN On Hold!</span>';
     }
 
-    if($result['loan_status'] === '3') {
+    if($result['loan_status'] == '3') {
         return '<span class="text-danger">LOAN Cancelled!</span>';
     }
 
-    if($result['loan_status'] === '1') {
+    if($result['loan_status'] == '1') {
         return '<span class="text-success">LOAN Completed!</span>';
     }
 }
@@ -212,18 +212,18 @@ function loanStatus($result){
 //DOMESTIC TRANSACTION STATUS
 
 function domestic($result){
-    if ($result['dom_status'] === '0') {
+    if ($result['dom_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-12">In Progress</span>';
     }
-    if($result['dom_status'] === '2'){
+    if($result['dom_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-12">Hold</span>';
     }
 
-    if($result['dom_status'] === '3') {
+    if($result['dom_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-12">Cancelled</span>';
     }
 
-    if($result['dom_status'] === '1') {
+    if($result['dom_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-12">Completed</span>';
     }
 }
@@ -236,36 +236,36 @@ $wire->execute([
     'acct_id'=>$acct_id
 ]);
 function transStatus($result){
-    if ($result['trans_status'] === '0') {
+    if ($result['trans_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
     }
-    if($result['trans_status'] === '2'){
+    if($result['trans_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-md-12">Hold</span>';
     }
 
-    if($result['trans_status'] === '3') {
+    if($result['trans_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-md-12">Cancelled</span>';
     }
 
-    if($result['trans_status'] === '1') {
+    if($result['trans_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-md-12">Completed</span>';
     }
 }
 
 //WIRE TRANSACTION STATUS
 function wireStatus($result){
-    if ($result['wire_status'] === '0') {
+    if ($result['wire_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
     }
-    if($result['wire_status'] === '2'){
+    if($result['wire_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-md-12">Hold</span>';
     }
 
-    if($result['wire_status'] === '3') {
+    if($result['wire_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-md-12">Cancelled</span>';
     }
 
-    if($result['wire_status'] === '1') {
+    if($result['wire_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-md-12">Completed</span>';
     }
 }
