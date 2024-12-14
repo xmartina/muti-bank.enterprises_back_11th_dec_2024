@@ -64,54 +64,54 @@ function getCardType($type): string
 }
 //WIRE TRANSACTION STATUS
 function wireStatus($result){
-    if ($result['wire_status'] === '0') {
+    if ($result['wire_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
     }
-    if($result['wire_status'] === '2'){
+    if($result['wire_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-md-12">Hold</span>';
     }
 
-    if($result['wire_status'] === '3') {
+    if($result['wire_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-md-12">Cancelled</span>';
     }
 
-    if($result['wire_status'] === '1') {
+    if($result['wire_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-md-12">Completed</span>';
     }
 }
 
 //CRYPTO TRANSACTION STATUS
 function cryptoTransaction($result){
-    if ($result['crypto_status'] === '0') {
+    if ($result['crypto_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
     }
-    if($result['crypto_status'] === '2'){
+    if($result['crypto_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-md-12">Hold</span>';
     }
 
-    if($result['crypto_status'] === '3') {
+    if($result['crypto_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-md-12">Cancelled</span>';
     }
 
-    if($result['crypto_status'] === '1') {
+    if($result['crypto_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-md-12">Completed</span>';
     }
 }
 
 //DOMESTIC TRANSACTION STATUS
 function domesticTransaction($result){
-    if ($result['dom_status'] === '0') {
+    if ($result['dom_status'] == '0') {
         return '<span class="badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
     }
-    if($result['dom_status'] === '2'){
+    if($result['dom_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-md-12">Hold</span>';
     }
 
-    if($result['dom_status'] === '3') {
+    if($result['dom_status'] == '3') {
         return '<span class="badge outline-badge-danger shadow-none col-md-12">Cancelled</span>';
     }
 
-    if($result['dom_status'] === '1') {
+    if($result['dom_status'] == '1') {
         return '<span class="badge outline-badge-primary shadow-none col-md-12">Completed</span>';
     }
 }
@@ -119,25 +119,25 @@ function domesticTransaction($result){
 
 //USERS CURRENCY
 function currency($row){
-    if($row['acct_currency'] === 'USD'){
+    if($row['acct_currency'] == 'USD'){
         return "$";
-    }elseif($row['acct_currency'] === 'EUR'){
+    }elseif($row['acct_currency'] == 'EUR'){
         return "€";
-    }elseif($row['acct_currency'] === 'WON'){
+    }elseif($row['acct_currency'] == 'WON'){
         return "₩";
-    }elseif($row['acct_currency'] === 'CNY'){
+    }elseif($row['acct_currency'] == 'CNY'){
         return "¥";
-    }elseif($row['acct_currency'] === 'JPY'){
+    }elseif($row['acct_currency'] == 'JPY'){
         return "¥";
-    }elseif($row['acct_currency'] === 'MYR'){
+    }elseif($row['acct_currency'] == 'MYR'){
         return "RM";
-    }elseif($row['acct_currency'] === 'GBP'){
+    }elseif($row['acct_currency'] == 'GBP'){
         return "£";
-    }elseif($row['acct_currency'] === 'CAD'){
+    }elseif($row['acct_currency'] == 'CAD'){
         return "$";
-    }elseif($row['acct_currency'] === 'NOK'){
+    }elseif($row['acct_currency'] == 'NOK'){
         return "kr";
-    }elseif($row['acct_currency'] === 'UAH'){
+    }elseif($row['acct_currency'] == 'UAH'){
         return "₴";
     }
 }
