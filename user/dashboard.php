@@ -140,7 +140,7 @@ unset($_SESSION['wire_transfer'], $_SESSION['dom_transfer']);
 
                             <div class="inv-action">
                                 <a href="./domestic-transfer.php" class="btn btn-outline-primary view-details">Domestic Transfer</a>
-                                <a href="./wire-transfer.php" class="btn btn-outline-primary pay-now">Wire Transfer</a>
+                                <a href="./wire-transfer.php" class="btn btn-outline-primary pay-now">Transfer Money</a>
                             </div>
                         </div>
                     </div>
