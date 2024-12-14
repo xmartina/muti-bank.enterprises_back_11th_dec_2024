@@ -36,8 +36,8 @@ table th {
 
 /* Alert Styling */
 .alert-secondary {
-    background: transparent;
-    color: #e2e3e5;
+    background-color: #e2e3e5;
+    color: #383d41;
 }
 
 </style>
@@ -202,7 +202,7 @@ table th {
             <a href="./dashboard.php" class="btn btn-secondary mx-2">
                 <i class="fa fa-home"></i> Go Home
             </a>
-            <a href="javascript:window.print()" class="btn btn-secondary mx-2">
+            <a href="javascript:window.print()" class="btn btn-outline-secondary mx-2">
                 <i class="fa fa-print"></i> Print Statement
             </a>
         </div>
