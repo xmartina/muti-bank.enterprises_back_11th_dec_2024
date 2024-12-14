@@ -18,32 +18,32 @@ $currency = currency($row);
 $email = $row['acct_email'];
 
 $fullName = $row['firstname']." ".$row['lastname'];
-if($row['trans_type'] === '1'){
+if($row['trans_type'] == '1'){
     $trans_type = '<span class="text-success">Credit</span>';
-}else if($row['trans_type']=== '2'){
+}else if($row['trans_type']== '2'){
     $trans_type = '<span class="text-danger">Debit</span>';
 }
 
-if ($row['trans_type']==='1'){
+if ($row['trans_type']=='1'){
     $transfer_type = "CREDIT";
-}else if($row['trans_type']==='2'){
+}else if($row['trans_type']=='2'){
     $transfer_type = "DEBIT";
 }
 
-if($row['trans_status'] === '0'){
+if($row['trans_status'] == '0'){
     $tran_status = '<span class="text-success">Processing</span>';
-}else if($row['trans_status'] === '1'){
+}else if($row['trans_status'] == '1'){
     $tran_status = '<span class="text-success">Approved</span>';
-}else if($row['trans_status']=== '3'){
+}else if($row['trans_status']== '3'){
     $tran_status = '<span class="text-danger">Cancel</span>';
-}else if($row['trans_status']=== '2') {
+}else if($row['trans_status']== '2') {
     $tran_status = '<span class="text-danger">Hold</span>';
 }
 
 //trans_type = 1 "CREDIT"
 //trans_type = 2 "DEBIT"
 
-if(($row['trans_type'] === '1') && isset($_POST['accept'])) {
+if(($row['trans_type'] == '1') && isset($_POST['accept'])) {
 $status_value = 1;
 $trans_id = $row['refrence_id'];
 $sql = "UPDATE transactions SET trans_status=:trans_status WHERE refrence_id=:id";
@@ -77,7 +77,7 @@ if (true) {
         toast_alert('error', 'Sorry Something Went Wrong');
     }
 }
-}else if(($row['trans_type']=== '2') && isset($_POST['accept'])){
+}else if(($row['trans_type']== '2') && isset($_POST['accept'])){
     $status_value = 1;
     $trans_id = $row['refrence_id'];
     $sql = "UPDATE transactions SET trans_status=:trans_status WHERE refrence_id=:id";
