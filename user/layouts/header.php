@@ -243,6 +243,7 @@ if ($row['acct_currency'] == 'USD') {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanwZggNVhJCReK2E/6IVKx1fYc1LfxIK6a8E6Aw0Z+v8LcXX3Gd6DQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 

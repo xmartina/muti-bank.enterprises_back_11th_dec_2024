@@ -21,28 +21,48 @@ $status = wireStatus($wire_trans);
 
 
 ?>
+<style type="text/css">
+    /* Custom Button Hover Effect */
+.btn-secondary:hover {
+    background-color: #5a5a5a;
+    border-color: #5a5a5a;
+}
 
+/* Table Header Styling */
+table th {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Alert Styling */
+.alert-secondary {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+</style>
     <div id="content" class="main-content">
     <div class="layout-px-spacing">
     <div class="row layout-top-spacing">
     <div class="col-md-8 offset-md-2 mt-5">
-        <div class="card shadow-sm">
+    
+    <div class="card shadow-sm">
     <div class="card-body">
         <?php
         if ($_SESSION['wire_transfer']) {
             // Wire Transfer Processing
-            $amount = $wire_trans['amount'];
-            $bank_name = $wire_trans['bank_name'];
-            $acct_name = $wire_trans['acct_name'];
-            $acct_number = $wire_trans['acct_number'];
-            $acct_country = $wire_trans['acct_country'];
-            $acct_swift = $wire_trans['acct_swift'];
-            $acct_routing = $wire_trans['acct_routing'];
-            $acct_type = $wire_trans['acct_type'];
+            $amount = htmlspecialchars($wire_trans['amount'], ENT_QUOTES, 'UTF-8');
+            $bank_name = htmlspecialchars($wire_trans['bank_name'], ENT_QUOTES, 'UTF-8');
+            $acct_name = htmlspecialchars($wire_trans['acct_name'], ENT_QUOTES, 'UTF-8');
+            $acct_number = htmlspecialchars($wire_trans['acct_number'], ENT_QUOTES, 'UTF-8');
+            $acct_country = htmlspecialchars($wire_trans['acct_country'], ENT_QUOTES, 'UTF-8');
+            $acct_swift = htmlspecialchars($wire_trans['acct_swift'], ENT_QUOTES, 'UTF-8');
+            $acct_routing = htmlspecialchars($wire_trans['acct_routing'], ENT_QUOTES, 'UTF-8');
+            $acct_type = htmlspecialchars($wire_trans['acct_type'], ENT_QUOTES, 'UTF-8');
 
-            $APP_NAME = $pageTitle;
+            $APP_NAME = htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8');
             $message = $sendMail->UserWireTransfer($currency, $amount, $fullName, $bank_name, $acct_name, $acct_number, $acct_country, $acct_swift, $acct_routing, $acct_type, $APP_NAME);
-
+            
             // User and Admin Emails
             $subject = "Wire Transfer - $APP_NAME";
             $email_message->send_mail($email, $message, $subject);
@@ -50,17 +70,17 @@ $status = wireStatus($wire_trans);
             ?>
 
             <div class="text-center mb-4">
-                <h4 class="text-success">Your transfer is being processed</h4>
+                <h4 class="text-dark">Your transfer is being processed</h4>
             </div>
 
-            <div class="alert alert-info text-center text-uppercase">
+            <div class="alert alert-secondary text-center text-uppercase">
                 Dear <?= htmlspecialchars(ucwords($fullName), ENT_QUOTES, 'UTF-8') ?>, your transfer to 
                 <strong><?= htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8') ?></strong> 
                 is being processed. <br> Please note that the transaction will take up to 24 hours to complete.
             </div>
 
-            <div class="progress mb-4" style="height: 25px;">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress mb-4" style="height: 20px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                     100%
                 </div>
             </div>
@@ -70,7 +90,7 @@ $status = wireStatus($wire_trans);
                     <tbody>
                         <tr>
                             <th scope="row">Amount</th>
-                            <td><?= htmlspecialchars($currency . $wire_trans['amount'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $currency . $amount ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Reference ID</th>
@@ -78,15 +98,15 @@ $status = wireStatus($wire_trans);
                         </tr>
                         <tr>
                             <th scope="row">Bank Name</th>
-                            <td><?= htmlspecialchars($wire_trans['bank_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $bank_name ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Account Name</th>
-                            <td><?= htmlspecialchars($wire_trans['acct_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $acct_name ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Account No</th>
-                            <td><?= htmlspecialchars($wire_trans['acct_number'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $acct_number ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Status</th>
@@ -105,15 +125,15 @@ $status = wireStatus($wire_trans);
             $dom_transfer = $stmt->fetch(PDO::FETCH_ASSOC);
             $status = domestic($dom_transfer);
 
-            $amount = $dom_transfer['amount'];
-            $bank_name = $dom_transfer['bank_name'];
-            $acct_name = $dom_transfer['acct_name'];
-            $acct_number = $dom_transfer['acct_number'];
-            $acct_type = $dom_transfer['acct_type'];
+            $amount = htmlspecialchars($dom_transfer['amount'], ENT_QUOTES, 'UTF-8');
+            $bank_name = htmlspecialchars($dom_transfer['bank_name'], ENT_QUOTES, 'UTF-8');
+            $acct_name = htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8');
+            $acct_number = htmlspecialchars($dom_transfer['acct_number'], ENT_QUOTES, 'UTF-8');
+            $acct_type = htmlspecialchars($dom_transfer['acct_type'], ENT_QUOTES, 'UTF-8');
 
-            $APP_NAME = $pageTitle;
+            $APP_NAME = htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8');
             $message = $sendMail->UserDomTransfer($currency, $amount, $fullName, $bank_name, $acct_name, $acct_number, $acct_type, $APP_NAME);
-
+            
             // User and Admin Emails
             $subject = "Domestic Transfer - $APP_NAME";
             $email_message->send_mail($email, $message, $subject);
@@ -121,17 +141,17 @@ $status = wireStatus($wire_trans);
             ?>
 
             <div class="text-center mb-4">
-                <h4 class="text-success">Transfer Successful</h4>
+                <h4 class="text-dark">Transfer Successful</h4>
             </div>
 
-            <div class="alert alert-info text-center text-uppercase">
+            <div class="alert alert-secondary text-center text-uppercase">
                 Dear <?= htmlspecialchars(ucwords($fullName), ENT_QUOTES, 'UTF-8') ?>, your transfer to 
                 <strong><?= htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8') ?></strong> 
                 is being processed.
             </div>
 
-            <div class="progress mb-4" style="height: 25px;">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress mb-4" style="height: 20px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                     100%
                 </div>
             </div>
@@ -141,7 +161,7 @@ $status = wireStatus($wire_trans);
                     <tbody>
                         <tr>
                             <th scope="row">Amount</th>
-                            <td><?= htmlspecialchars($currency . $dom_transfer['amount'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $currency . $amount ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Reference ID</th>
@@ -149,15 +169,15 @@ $status = wireStatus($wire_trans);
                         </tr>
                         <tr>
                             <th scope="row">Bank Name</th>
-                            <td><?= htmlspecialchars($dom_transfer['bank_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $bank_name ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Account Name</th>
-                            <td><?= htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $acct_name ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Account No</th>
-                            <td><?= htmlspecialchars($dom_transfer['acct_number'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $acct_number ?></td>
                         </tr>
                         <tr>
                             <th scope="row">Status</th>
@@ -179,10 +199,10 @@ $status = wireStatus($wire_trans);
         ?>
 
         <div class="mt-4 text-center">
-            <a href="./dashboard.php" class="btn btn-primary mx-2">
+            <a href="./dashboard.php" class="btn btn-secondary mx-2">
                 <i class="fa fa-home"></i> Go Home
             </a>
-            <a href="javascript:window.print()" class="btn btn-success mx-2">
+            <a href="javascript:window.print()" class="btn btn-secondary mx-2">
                 <i class="fa fa-print"></i> Print Statement
             </a>
         </div>
