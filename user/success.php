@@ -151,7 +151,7 @@ table th {
             </div>
 
             <div class="progress mb-4" style="height: 20px;">
-                <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar bg-dark" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                     100%
                 </div>
             </div>
@@ -199,10 +199,10 @@ table th {
         ?>
 
         <div class="mt-4 text-center">
-            <a href="./dashboard.php" class="btn btn-secondary mx-2">
+            <a href="./dashboard.php" class="btn btn-success mx-2">
                 <i class="fa fa-home"></i> Go Home
             </a>
-            <a href="javascript:window.print()" class="btn btn-outline-secondary mx-2">
+            <a href="javascript:window.print()" class="btn btn-outline-success mx-2">
                 <i class="fa fa-print"></i> Print Statement
             </a>
         </div>
