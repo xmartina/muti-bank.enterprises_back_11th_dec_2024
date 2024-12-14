@@ -36,8 +36,8 @@ table th {
 
 /* Alert Styling */
 .alert-secondary {
-    background-color: #e2e3e5;
-    color: #383d41;
+    background: transparent;
+    color: #e2e3e5;
 }
 
 </style>
