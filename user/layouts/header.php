@@ -117,29 +117,29 @@ $cardstmt->execute([
 
 $cardCheck = $cardstmt->fetch(PDO::FETCH_ASSOC);
 
-if ($row['acct_currency'] === 'USD') {
+if ($row['acct_currency'] == 'USD') {
     $currency = "$";
-} elseif ($row['acct_currency'] === 'EUR') {
+} elseif ($row['acct_currency'] == 'EUR') {
     $currency = "€";
-} elseif ($row['acct_currency'] === 'GBP') {
+} elseif ($row['acct_currency'] == 'GBP') {
     $currency = "£";
-} elseif ($row['acct_currency'] === 'VND') {
+} elseif ($row['acct_currency'] == 'VND') {
     $currency = "₫"; // Vietnam Dong symbol
-} elseif ($row['acct_currency'] === 'THB') {
+} elseif ($row['acct_currency'] == 'THB') {
     $currency = "฿"; // Thai Baht symbol
-} elseif ($row['acct_currency'] === 'IDR') {
+} elseif ($row['acct_currency'] == 'IDR') {
     $currency = "Rp"; // Indonesian Rupiah symbol
-} elseif ($row['acct_currency'] === 'MNT') {
+} elseif ($row['acct_currency'] == 'MNT') {
     $currency = "₮"; // Mongolian Tugrik symbol
-} elseif ($row['acct_currency'] === 'MMK') {
+} elseif ($row['acct_currency'] == 'MMK') {
     $currency = "Ks"; // Myanmar Kyat symbol
-} elseif ($row['acct_currency'] === 'JPY') {
+} elseif ($row['acct_currency'] == 'JPY') {
     $currency = "¥"; // Japanese Yen symbol
-} elseif ($row['acct_currency'] === 'KHR') {
+} elseif ($row['acct_currency'] == 'KHR') {
     $currency = "៛"; // Cambodian Riel symbol
-} elseif ($row['acct_currency'] === 'DE') {
+} elseif ($row['acct_currency'] == 'DE') {
     $currency = "€"; // Euros for Germany
-} elseif ($row['acct_currency'] === 'LAK') {
+} elseif ($row['acct_currency'] == 'LAK') {
     $currency = "₭"; // Lao Kip symbol
 }
 
