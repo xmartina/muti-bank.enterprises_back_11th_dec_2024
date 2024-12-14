@@ -34,7 +34,7 @@ Please enter your COT code to complete your fund transfer. To obtain a COT code,
 
 Thank you.";
 ?>
-<div class="alert alert-info">
+<div class="text-center text-info text-uppercase">
     <p><?= nl2br($message) ?></p>
 </div>
 
