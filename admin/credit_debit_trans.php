@@ -42,7 +42,7 @@ include_once("./layout/header.php");
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                                 if($row['trans_type'] === '1'){
                                     $trans_type = '<span class="text-success">Credit</span>';
-                                }else if($row['trans_type']=== '2'){
+                                }elseif($row['trans_type']=== '2'){
                                     $trans_type = '<span class="text-danger">Debit</span>';
                                 }
                                 $currency = currency($row);
