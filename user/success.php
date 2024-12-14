@@ -113,7 +113,7 @@ table th {
                         </tr>
                         <tr>
                             <th scope="row">Status</th>
-                            <td><?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= $status ?></td>
                         </tr>
                     </tbody>
                 </table>
