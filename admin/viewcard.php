@@ -124,12 +124,8 @@ die;
                                                     <span class="card-month text-white">month/year</span>
                                                     <p class="card-date text-white"><span class="valid-up-to text-white">valid up to</span> <span class="text-white"><?=$cardCheck['card_expiration']?></span></p>
                                                 </div>
-                                                <ul class="list-unstyled card-wrapper__item-list">
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
+                                                <ul class="list-unstyled card-wrapper__item-list bg-muted">
+                                                    
                                                 </ul>
                                             </li>
                                             <li class="card-wrapper__row row-4">
