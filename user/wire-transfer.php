@@ -405,7 +405,8 @@ require_once("userPinfunction.php");
                                                 <div class="form-group mb-4 mt-4">
                                                     <label for="">Select Account Type</label>
                                                     <div class="input-group">
-                                                        <select name="acct_type" class='' data-width='100%'
+                                                        <select name="acct_type" aria-label="notification"
+                                                            aria-describedby="basic-addon1" class='form-control' data-width='100%'
                                                             required>
                                                             <option value="">Select Account Type</option>
                                                             <option value="Savings">Savings Account</option>
