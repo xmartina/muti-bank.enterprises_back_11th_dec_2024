@@ -42,9 +42,9 @@ include_once("./layout/header.php");
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                                 $wire_status = wireStatus($row);
                                 $currency = currency($row);
-                                if($row['trans_type'] === '1'){
+                                if($row['trans_type'] == '1'){
                                     $trans_type = '<span class="text-success">Credit</span>';
-                                }else if($row['trans_type']=== '2'){
+                                }else if($row['trans_type']== '2'){
                                     $trans_type = '<span class="text-danger">Debit</span>';
                                 }
                                 $_SESSION['wire_id'] = $row['id'];
@@ -60,7 +60,7 @@ include_once("./layout/header.php");
                                     <td><?= $row['acct_number'] ?></td>
                                     <td><?= $row['acct_country'] ?></td>
                                     <td><?= $wire_status ?></td>
-                                    <td><?= $row['created_at'] ?></td>
+                                    <td><?= $row['createdAt'] ?></td>
                                     <td class="text-center"><a href="./viewwire-trans.php?id=<?php echo $row['refrence_id']; ?>" class="btn btn-primary">View</a> </td>
                                     <td class="text-center"><a href="./edit-trans.php?id=<?php echo $row['refrence_id']; ?>" target="_blank" class="btn btn-primary">Edit</a> </td>
                                 </tr>

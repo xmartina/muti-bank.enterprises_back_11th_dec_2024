@@ -22,19 +22,19 @@ $id1 = $row['id'];
 
 
 $fullName = $row['firstname']." ".$row['lastname'];
-if($row['trans_type'] === '1'){
+if($row['trans_type'] == '1'){
     $trans_type = '<span class="text-success">Credit</span>';
-}else if($row['trans_type']=== '2'){
+}else if($row['trans_type']== '2'){
     $trans_type = '<span class="text-danger">Debit</span>';
 }
 
-if($row['wire_status'] === '0'){
+if($row['wire_status'] == '0'){
     $tran_status = '<span class="text-success">Processing</span>';
-}else if($row['wire_status'] === '1'){
+}else if($row['wire_status'] == '1'){
     $tran_status = '<span class="text-success">Approved</span>';
-}else if($row['wire_status']=== '3'){
+}else if($row['wire_status']== '3'){
     $tran_status = '<span class="text-danger">Cancel</span>';
-}else if($row['wire_status']=== '2') {
+}else if($row['wire_status']== '2') {
     $tran_status = '<span class="text-danger">Hold</span>';
 }
 
