@@ -39,6 +39,9 @@ table th {
     background-color: #e2e3e5;
     color: #383d41;
 }
+.bg-dark{
+    background-color: rgb(47, 50, 74);
+}
 
 </style>
     <div id="content" class="main-content">
@@ -199,10 +202,10 @@ table th {
         ?>
 
         <div class="mt-4 text-center">
-            <a href="./dashboard.php" class="btn btn-success mx-2">
+            <a href="./dashboard.php" class="btn btn-dark mx-2">
                 <i class="fa fa-home"></i> Go Home
             </a>
-            <a href="javascript:window.print()" class="btn btn-outline-success mx-2">
+            <a href="javascript:window.print()" class="btn btn-outline-dark mx-2">
                 <i class="fa fa-print"></i> Print Statement
             </a>
         </div>
