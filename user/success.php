@@ -173,6 +173,9 @@ table th {
 tbody {
     border-color: #fff !important;
 }
+table {
+    background-color: #fff !important;
+}
     </style>
     <div id="content" class="main-content">
     <div class="layout-px-spacing">
