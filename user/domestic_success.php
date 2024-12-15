@@ -198,10 +198,10 @@ table {
                             ?>
 
                             <div class="text-center mb-4">
-                                <h4 class="text-success">Transfer Successful</h4>
+                                <h4 class=" text-dark">Your transfer is being processed</h4>
                             </div>
 
-                            <div class="alert-text-dec">
+                            <div class="text-dark text-center text-uppercase alert alert-text-dec">
                                 Dear <?= htmlspecialchars(ucwords($fullName), ENT_QUOTES, 'UTF-8') ?>, your transfer to 
                                 <strong><?= htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8') ?></strong> 
                                 has been processed successfully.<br> Please note that the transaction will take up to 24 hours to complete.
