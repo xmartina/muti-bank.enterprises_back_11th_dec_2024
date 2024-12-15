@@ -170,7 +170,9 @@ table th {
 .outline-badge-secondary {
     border: 1px solid #fff !important;
 }
-
+tbody {
+    border-color: #fff !important;
+}
     </style>
     <div id="content" class="main-content">
     <div class="layout-px-spacing">
