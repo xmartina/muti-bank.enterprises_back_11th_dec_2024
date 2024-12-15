@@ -4,117 +4,164 @@ include_once("layouts/header.php");
 include("./userPinfunction.php");
 ?>
 <style>
-    /* General Styling */
-
-    .card {
-        background-color: #ffffff !important;
-        border: 1px solid #333333 !important;
-        border-radius: 10px !important;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-    }
-
-    .card-header {
-        background-color: #333333;
-        border-bottom: 1px solid #333333;
-        text-align: center;
-        padding: 20px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    .card-header h2 {
-        margin: 0;
-        font-size: 24px;
-        color: #ffffff;
-    }
-
-    .alert-text-dec {
-        background-color: #fff;
-        border: 1.45px solid #333333;
-        color: #333333;
-        padding: 15px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    .progress {
-        background-color: #333333;
-        border-radius: 10px;
-        overflow: hidden;
-        height: 25px;
-        margin-bottom: 20px;
-    }
-
-    .progress-bar {
-        background-color: #333333;
-        color: #ffffff;
-        font-weight: bold;
-        line-height: 25px;
-        width: 100%;
-    }
-
-    table {
-        background-color: #fff !important;
-        color: #333333 !important;
-    }
-
-    table th {
-        background-color: #fff !important;
-        color: #333333 !important;
-        border-bottom: 2px solid #333333 !important;
-    }
-
-    table td, table th {
-        padding: 15px;
-        vertical-align: middle;
-        border-left: 1.45px solid #333333 !important;
-    }
-
-    .btn-custom {
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: bold;
-    }
-
-    .btn-home {
-        background-color: #ffffff;
-        color: #333333;
-        border: none;
-    }
-
-    .btn-home:hover {
-        background-color: #e0e0e0;
-        color: #333333;
-    }
-
-    .btn-print {
-        background-color: transparent;
-        color: #333333;
-        border: 2px solid #333333;
-    }
-
-    .btn-print:hover {
-        background-color: #333333;
-        color: #ffffff;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 576px) {
-        .card-header h2 {
-            font-size: 20px;
+          /* General Styling */
+       
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        table th, table td {
-            padding: 10px;
+        .card-header {
+            background-color: #000000;
+            border-bottom: 1px solid #333333;
+            text-align: center;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .alert {
+            background-color: #333333;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background-color: #2e7d32;
+            color: #ffffff;
+        }
+
+        .alert-danger {
+            background-color: #c62828;
+            color: #ffffff;
+        }
+
+        .progress {
+            background-color: #333333;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 25px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            line-height: 25px;
+        }
+
+        table {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        table th {
+            background-color: #000000;
+            color: #ffffff;
+            border-bottom: 2px solid #333333;
+        }
+
+        table td, table th {
+            padding: 15px;
+            vertical-align: middle;
         }
 
         .btn-custom {
-            width: 100%;
-            margin-bottom: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
         }
-    }
+
+        .btn-home {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+        }
+
+        .btn-home:hover {
+            background-color: #e0e0e0;
+            color: #000000;
+        }
+
+        .btn-print {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-print:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 576px) {
+            .card-header h2 {
+                font-size: 20px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+
+            .btn-custom {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+/*        Adjustment*/
+        .card {
+    background-color: #ffffff !important;
+    border: 1px solid #333333 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.table td, .table th {
+    border-top: 1px solid #fff !important;
+}
+
+table th {
+    background-color: #fff !important;
+    color: #333333 !important;
+    border-bottom: 2px solid #fff !important;
+}
+
+.btn-print {
+    color: #333333 !important;
+    border: 2px solid #333333 !important;
+}
+
+.outline-badge-secondary:focus, .outline-badge-secondary:hover {
+    color: #333333 !important;
+    background-color: #fff !important;
+}
+
+.outline-badge-secondary {
+    border: 1px solid #fff !important;
+}
+td {
+    border-left:1.45px solid #333333 !important;
+}
+table {
+    background-color: #fff !important;
+}
+.alert-text-dec{
+    background-color: #fff;
+    border: 1.45px solid #333333;
+}
 </style>
 
 <div id="content" class="main-content">
