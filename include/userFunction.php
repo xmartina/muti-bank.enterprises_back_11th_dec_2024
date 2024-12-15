@@ -213,7 +213,7 @@ function loanStatus($result){
 
 function domestic($result){
     if ($result['dom_status'] == '0') {
-        return '<span class="badge outline-badge-secondary shadow-none col-12">In Progress</span>';
+        return '<span class="text-left badge outline-badge-secondary shadow-none col-12">In Progress</span>';
     }
     if($result['dom_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-12">Hold</span>';
@@ -255,7 +255,7 @@ function transStatus($result){
 //WIRE TRANSACTION STATUS
 function wireStatus($result){
     if ($result['wire_status'] == '0') {
-        return '<span class="badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
+        return '<span class="text-left badge outline-badge-secondary shadow-none col-md-12">In Progress</span>';
     }
     if($result['wire_status'] == '2'){
         return  '<span class="badge outline-badge-danger shadow-none col-md-12">Hold</span>';
