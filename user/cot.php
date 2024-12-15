@@ -25,15 +25,7 @@ include("./userPinfunction.php");
                                 <form action="" method="post">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p class="text-center text-info text-uppercase">
-    <?php
-    $customerName = htmlspecialchars($row['firstname'] . " " . $row['lastname'], ENT_QUOTES, 'UTF-8');
-    $message = "Hello, {$customerName},\n\nPlease enter your COT code to complete your fund transfer. To obtain a COT code, contact our support team at <a href="mailto:support@multi-bank.enterprises">support@multi-bank.enterprises</a> to make the payment.\n\nThank you.";
-    ?>
-    <div class="text-center text-info text-uppercase">
-        <p><?= nl2br($message) ?></p>
-    </div>
-</p>
+                                           
 
 
                                         </div>
