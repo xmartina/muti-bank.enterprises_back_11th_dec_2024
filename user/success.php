@@ -213,11 +213,7 @@ table th {
                         is being processed. <br> Please note that the transaction will take up to 24 hours to complete.
                     </div>
 
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                            100%
-                        </div>
-                    </div>
+                    
 
                     <div class="table-responsive">
                         <table class="table">
