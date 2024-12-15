@@ -170,7 +170,7 @@ table th {
 .outline-badge-secondary {
     border: 1px solid #fff !important;
 }
-tbody {
+td {
     border-left:1.45px solid #333333 !important;
 }
 table {
