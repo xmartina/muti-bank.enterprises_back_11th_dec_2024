@@ -141,30 +141,36 @@ $status = wireStatus($wire_trans);
 
 /*        Adjustment*/
         .card {
-            background-color: #ffffff;
-            border: 1px solid #333333;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        .table td, .table th {
-    border-top: 1px solid #fff;
+    background-color: #ffffff !important;
+    border: 1px solid #333333 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
 }
+
+.table td, .table th {
+    border-top: 1px solid #fff !important;
+}
+
 table th {
-    background-color: #fff;
-    color: #333333;
-    border-bottom: 2px solid #fff;
+    background-color: #fff !important;
+    color: #333333 !important;
+    border-bottom: 2px solid #fff !important;
 }
+
 .btn-print {
-    color: #333333;
-    border: 2px solid #333333;
+    color: #333333 !important;
+    border: 2px solid #333333 !important;
 }
+
 .outline-badge-secondary:focus, .outline-badge-secondary:hover {
-    color: #333333;
-    background-color: #fff;
+    color: #333333 !important;
+    background-color: #fff !important;
 }
+
 .outline-badge-secondary {
-    border: 1px solid #fff;
+    border: 1px solid #fff !important;
 }
+
     </style>
     <div id="content" class="main-content">
     <div class="layout-px-spacing">
