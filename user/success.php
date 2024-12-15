@@ -213,7 +213,7 @@ table {
                     ?>
 
                     <div class="text-center mb-4">
-                        <h4 class="text-success">Your transfer is being processed</h4>
+                        <h4 class="text-dark">Your transfer is being processed</h4>
                     </div>
 
                     <div class="alert alert-text-dec text-dark text-center text-uppercase">
