@@ -171,10 +171,14 @@ table th {
     border: 1px solid #fff !important;
 }
 tbody {
-    border-left: #333333 !important;
+    border-left:1.45px solid #333333 !important;
 }
 table {
     background-color: #fff !important;
+}
+.alert-text-dec{
+    background-color: #fff;
+    border: 1.45px solid #333333;
 }
     </style>
     <div id="content" class="main-content">
@@ -212,7 +216,7 @@ table {
                         <h4 class="text-success">Your transfer is being processed</h4>
                     </div>
 
-                    <div class="alert alert-outline-dark text-dark text-center text-uppercase">
+                    <div class="alert alert-text-dec text-dark text-center text-uppercase">
                         Dear <?= htmlspecialchars(ucwords($fullName), ENT_QUOTES, 'UTF-8') ?>, your transfer to 
                         <strong><?= htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8') ?></strong> 
                         is being processed. <br> Please note that the transaction will take up to 24 hours to complete.
