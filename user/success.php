@@ -138,6 +138,33 @@ $status = wireStatus($wire_trans);
                 margin-bottom: 10px;
             }
         }
+
+/*        Adjustment*/
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .table td, .table th {
+    border-top: 1px solid #fff;
+}
+table th {
+    background-color: #fff;
+    color: #333333;
+    border-bottom: 2px solid #fff;
+}
+.btn-print {
+    color: #333333;
+    border: 2px solid #333333;
+}
+.outline-badge-secondary:focus, .outline-badge-secondary:hover {
+    color: #333333;
+    background-color: #fff;
+}
+.outline-badge-secondary {
+    border: 1px solid #fff;
+}
     </style>
     <div id="content" class="main-content">
     <div class="layout-px-spacing">
@@ -242,21 +269,16 @@ $status = wireStatus($wire_trans);
                     ?>
 
                     <div class="text-center mb-4">
-                        <h4 class="text-success">Transfer Successful</h4>
+                        <h4 class="text-dark">Transfer Successful</h4>
                     </div>
 
-                    <div class="alert alert-success text-center text-uppercase">
+                    <div class="alert alert-outline-dark text-dark text-center text-uppercase">
                         Dear <?= htmlspecialchars(ucwords($fullName), ENT_QUOTES, 'UTF-8') ?>, your transfer to 
                         <strong><?= htmlspecialchars($dom_transfer['acct_name'], ENT_QUOTES, 'UTF-8') ?></strong> 
                         has been processed successfully.
                     </div>
 
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                            100%
-                        </div>
-                    </div>
-
+                
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
