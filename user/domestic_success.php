@@ -5,11 +5,6 @@ include("./userPinfunction.php");
 ?>
 <style>
     /* General Styling */
-    body {
-        background-color: #121212;
-        color: #ffffff;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
 
     .card {
         background-color: #ffffff !important;
@@ -165,12 +160,6 @@ include("./userPinfunction.php");
                                 has been processed successfully.<br> Please note that the transaction will take up to 24 hours to complete.
                             </div>
 
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                    100%
-                                </div>
-                            </div>
-
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <tbody>
@@ -196,7 +185,7 @@ include("./userPinfunction.php");
                                         </tr>
                                         <tr>
                                             <th scope="row">Status</th>
-                                            <td><?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?></td>
+                                            <td><?= $status ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
